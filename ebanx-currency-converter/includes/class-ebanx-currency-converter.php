@@ -1,0 +1,68 @@
+<?php
+
+class Ebanx_Currency_Converter {
+
+	protected $loader;
+	protected $ebanx_currency_converter;
+	protected $version;
+
+	public function __construct() {
+		$this->ebanx_currency_converter = 'ebanx-currency-converter';
+		$this->version = '0.0.1';
+
+		$this->load_dependencies();
+		$this->set_locale();
+		$this->define_admin_hooks();
+		$this->define_public_hooks();
+	}
+
+	private function load_dependencies() {
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ebanx-currency-converter-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ebanx-currency-converter-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-ebanx-currency-converter-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-ebanx-currency-converter-public.php';
+
+		$this->loader = new Ebanx_Currency_Converter_Loader();
+	}
+
+	private function set_locale() {
+
+		$plugin_i18n = new Ebanx_Currency_Converter_i18n();
+
+		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
+
+	}
+
+	private function define_admin_hooks() {
+
+		$plugin_admin = new Ebanx_Currency_Converter_Admin( $this->get_ebanx_currency_converter(), $this->get_version() );
+
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+
+	}
+
+	private function define_public_hooks() {
+		$plugin_public = new Ebanx_Currency_Converter_Public( $this->get_ebanx_currency_converter(), $this->get_version() );
+
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+	}
+
+	public function run() {
+		$this->loader->run();
+	}
+
+	public function get_ebanx_currency_converter() {
+		return $this->ebanx_currency_converter;
+	}
+
+	public function get_loader() {
+		return $this->loader;
+	}
+
+	public function get_version() {
+		return $this->version;
+	}
+
+}

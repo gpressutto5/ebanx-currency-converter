@@ -23,8 +23,10 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        // Import display
-        echo 'widget-test';
+        ebanx_currency_converter_get_template('widgets/templates/public', [
+            'foo' => 'bar',
+            'bar' => 'baz'
+        ]);
     }
 
     /**

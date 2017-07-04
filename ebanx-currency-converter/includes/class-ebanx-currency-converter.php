@@ -22,11 +22,12 @@ class Ebanx_Currency_Converter
     {
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ebanx-currency-converter-loader.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ebanx-currency-converter-i18n.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/ebanx-currency-converter-global-functions.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-ebanx-currency-converter-admin.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-ebanx-currency-converter-public.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ebanx-currency-converter-notice.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'interceptors/class-ebanx-currency-converter-settings-interceptor.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'public/widgets/class-ebanx-currency-converter-widget.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'widgets/class-ebanx-currency-converter-widget.php';
 
         $this->loader = new Ebanx_Currency_Converter_Loader();
     }

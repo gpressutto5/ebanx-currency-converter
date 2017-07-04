@@ -24,6 +24,8 @@ class Ebanx_Currency_Converter
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ebanx-currency-converter-i18n.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-ebanx-currency-converter-admin.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-ebanx-currency-converter-public.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ebanx-currency-converter-notice.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'interceptors/class-ebanx-currency-converter-settings-interceptor.php';
 
         $this->loader = new Ebanx_Currency_Converter_Loader();
     }
@@ -41,9 +43,11 @@ class Ebanx_Currency_Converter
     {
 
         $plugin_admin = new Ebanx_Currency_Converter_Admin($this->get_ebanx_currency_converter(), $this->get_version());
+        $ebanx_interceptor = new Ebanx_Currency_converter_Settings_Interceptor();
 
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+        $this->loader->add_filter('ebanx_settings_form_fields', $ebanx_interceptor, 'form_fields');
 
     }
 

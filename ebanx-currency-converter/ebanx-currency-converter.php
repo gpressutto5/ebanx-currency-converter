@@ -56,10 +56,8 @@ require plugin_dir_path(__FILE__) . 'includes/class-ebanx-currency-converter.php
  */
 function run_ebanx_currency_converter()
 {
-
     $plugin = new Ebanx_Currency_Converter();
     $plugin->run();
-
 }
 
 run_ebanx_currency_converter();

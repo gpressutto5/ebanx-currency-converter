@@ -26,6 +26,7 @@ class Ebanx_Currency_Converter
         require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-ebanx-currency-converter-public.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-ebanx-currency-converter-notice.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'interceptors/class-ebanx-currency-converter-settings-interceptor.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'public/widgets/class-ebanx-currency-converter-widget.php';
 
         $this->loader = new Ebanx_Currency_Converter_Loader();
     }
@@ -67,6 +68,7 @@ class Ebanx_Currency_Converter
 
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+        $this->loader->add_action('widgets_init', $plugin_public, 'register_widget');
     }
 
     public function run()

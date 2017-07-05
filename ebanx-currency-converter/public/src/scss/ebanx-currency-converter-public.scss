@@ -1,0 +1,15 @@
+$flag-size: 40px;
+
+.ebanx-currency-converter- {
+  &-body {
+    width: 100%;
+    height: auto;
+  }
+  &-flag {
+    height: $flag-size;
+    width: $flag-size;
+    &-link {
+      margin: 0 5px;
+    }
+  }
+}

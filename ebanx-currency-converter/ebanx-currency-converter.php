@@ -17,6 +17,8 @@ if (!defined('ABSPATH')) {
     die;
 }
 
+define('EBANX_CURRENCY_CONVERTER_PLUGIN_DIR_URL', plugin_dir_url(__FILE__) . DIRECTORY_SEPARATOR);
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-ebanx-currency-converter-activator.php

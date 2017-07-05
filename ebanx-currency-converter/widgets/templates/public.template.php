@@ -4,15 +4,17 @@
 } ?>
 
 <!-- WIDGET BODY-->
-<ul>
-    <?php foreach ($countries as $country => $enabled): ?>
-        <?php if ($enabled): ?>
-            <li>
-                <a href="#"><?= ucfirst($country) ?></a>
-            </li>
-        <?php endif; ?>
-    <?php endforeach; ?>
-</ul>
+<div class="ebanx-currency-converter--body">
+    <?php foreach ($countries as $country):
+        if ($country['enabled']): ?>
+            <a class="ebanx-currency-converter--flag-link" href="#">
+                <img class="ebanx-currency-converter--flag"
+                     src="<?= EBANX_CURRENCY_CONVERTER_PLUGIN_DIR_URL ?>assets/images/<?= $country['code'] ?>.svg"
+                     alt="<?= $country['name'] ?>">
+            </a>
+        <?php endif;
+    endforeach; ?>
+</div>
 <!-- /WIDGET BODY-->
 
 <?= $args['after_widget'] ?>

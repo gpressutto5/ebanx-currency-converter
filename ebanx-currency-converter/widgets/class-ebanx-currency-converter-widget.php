@@ -9,7 +9,7 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
     public function __construct()
     {
         parent::__construct('ebanx_currency_converter',
-            __('Ebanx Currency Converter', 'ebanx_currency_converter'),[
+            __('Ebanx Currency Converter', 'ebanx_currency_converter'), [
                 'description' => esc_html__('Ebanx Currency Converter Widget', 'ebanx_currency_converter'),
             ]
         );
@@ -23,10 +23,11 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
      */
     public function widget($args, $instance)
     {
-        ebanx_currency_converter_get_template('widgets/templates/public', [
-            'foo' => 'bar',
-            'bar' => 'baz'
-        ]);
+        $data = [
+            'args' => $args,
+            'title' => apply_filters('widget_title', $instance['title']),
+        ];
+        ebanx_currency_converter_get_template('widgets/templates/public', $data);
     }
 
     /**
@@ -37,8 +38,22 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
      */
     public function form($instance)
     {
-        // Import admin display
-        return 'widget-admin';
+        $data = [
+            'field' => [
+                'title' => $this->get_field('title', __('Ebanx Currency Converter', 'ebanx_currency_converter'), $instance)
+            ],
+        ];
+        ebanx_currency_converter_get_template('widgets/templates/form', $data);
+        return 'form';
+    }
+
+    private function get_field($name, $default, $instance)
+    {
+        return [
+            'id' => $this->get_field_id($name),
+            'name' => $this->get_field_name($name),
+            'value' => $instance[$name] ?: $default,
+        ];
     }
 
     /**

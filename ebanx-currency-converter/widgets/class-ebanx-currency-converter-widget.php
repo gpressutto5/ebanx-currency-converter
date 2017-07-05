@@ -27,6 +27,13 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
         $data = [
             'args' => $args,
             'title' => apply_filters('widget_title', $instance['title']),
+            'countries' => [
+                'brazil' => $instance['brazil'],
+                'mexico' => $instance['mexico'],
+                'colombia' => $instance['colombia'],
+                'chile' => $instance['chile'],
+                'peru' => $instance['peru'],
+            ],
         ];
         ebanx_currency_converter_get_template('widgets/templates/public', $data);
     }

@@ -4,7 +4,15 @@
 } ?>
 
 <!-- WIDGET BODY-->
-
+<ul>
+    <?php foreach ($countries as $country => $enabled): ?>
+        <?php if ($enabled): ?>
+            <li>
+                <a href="#"><?= ucfirst($country) ?></a>
+            </li>
+        <?php endif; ?>
+    <?php endforeach; ?>
+</ul>
 <!-- /WIDGET BODY-->
 
 <?= $args['after_widget'] ?>

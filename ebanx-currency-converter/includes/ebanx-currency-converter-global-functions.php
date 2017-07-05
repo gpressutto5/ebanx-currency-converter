@@ -8,7 +8,7 @@ class Ebanx_Currency_Converter_Globals
 {
     public function get_template($path, $args = [], $echo = true)
     {
-        $path = plugin_dir_path( dirname( __FILE__ ) ) . $path . '.php';
+        $path = plugin_dir_path( dirname( __FILE__ ) ) . $path . '.template.php';
         if (!empty($args)) {
             extract($args);
         }

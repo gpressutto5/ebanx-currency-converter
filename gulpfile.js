@@ -3,6 +3,7 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
+var browserSync = require('browser-sync').create();
 
 var browserify  = require('browserify');
 var babelify    = require('babelify');
@@ -89,4 +90,17 @@ gulp.task('watch', function () {
     gulp.watch(ADMIN_PATH + SASS_PATH + '*.scss', ['admin-sass']);
     gulp.watch(PUBLIC_PATH + JS_PATH + '*.js', ['public-js']);
     gulp.watch(ADMIN_PATH + JS_PATH + '*.js', ['admin-js']);
+});
+
+gulp.task('serve', function() {
+    browserSync.init({
+        proxy: "wordpress.dev"
+    });
+
+    gulp.run('watch');
+    gulp.watch(PUBLIC_PATH + CSS_PATH + '*.css').on('change', browserSync.reload);
+    gulp.watch(ADMIN_PATH + CSS_PATH + '*.css').on('change', browserSync.reload);
+    gulp.watch(PUBLIC_PATH + JS_DIST_PATH + '*.js').on('change', browserSync.reload);
+    gulp.watch(ADMIN_PATH + JS_DIST_PATH + '*.js').on('change', browserSync.reload);
+    gulp.watch("ebanx-currency-converter/**/*.template.php").on('change', browserSync.reload);
 });

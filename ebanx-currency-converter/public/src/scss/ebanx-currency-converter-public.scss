@@ -6,10 +6,17 @@ $flag-size: 40px;
     height: auto;
   }
   &-flag {
-    height: $flag-size;
-    width: $flag-size;
-    &-link {
+    &-list {
+      display: inline-flex;
+    }
+    &-item {
+      display: list-item;
+      border: 0 !important;
       margin: 0 5px;
+    }
+    &-image {
+      height: $flag-size;
+      width: $flag-size;
     }
   }
 }

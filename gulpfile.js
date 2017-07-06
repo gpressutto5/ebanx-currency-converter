@@ -98,9 +98,5 @@ gulp.task('serve', function() {
     });
 
     gulp.run('watch');
-    gulp.watch(PUBLIC_PATH + CSS_PATH + '*.css').on('change', browserSync.reload);
-    gulp.watch(ADMIN_PATH + CSS_PATH + '*.css').on('change', browserSync.reload);
-    gulp.watch(PUBLIC_PATH + JS_DIST_PATH + '*.js').on('change', browserSync.reload);
-    gulp.watch(ADMIN_PATH + JS_DIST_PATH + '*.js').on('change', browserSync.reload);
-    gulp.watch("ebanx-currency-converter/**/*.template.php").on('change', browserSync.reload);
+    gulp.watch('ebanx-currency-converter/**/{dist/**/*.{css,js},*.template.php}').on('change', browserSync.reload);
 });

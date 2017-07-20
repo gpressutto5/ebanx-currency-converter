@@ -58,6 +58,18 @@ require plugin_dir_path(__FILE__) . 'includes/class-ebanx-currency-converter.php
  */
 function run_ebanx_currency_converter()
 {
+    require_once plugin_dir_path(__FILE__) . 'includes/ebanx-currency-converter-global-functions.php';
+
+    if (!ebanx_currency_converter_is_ebanx_active()) {
+        require_once plugin_dir_path(__FILE__) . 'includes/class-ebanx-currency-converter-notice.php';
+        $notice = new Ebanx_Currency_Converter_Notice();
+        $notice->with_message('To use EBANX Currency Converter you need to install and activate EBANX WooCommerce Gateway.')
+            ->with_type('error')
+            ->persistent()
+            ->enqueue();
+
+        return;
+    }
     $plugin = new Ebanx_Currency_Converter();
     $plugin->run();
 }

@@ -60,13 +60,32 @@ function run_ebanx_currency_converter()
 {
     require_once plugin_dir_path(__FILE__) . 'includes/ebanx-currency-converter-global-functions.php';
 
+    $error = '';
+
+    if (!ebanx_currency_converter_is_ebanx_installed()) {
+        $error =
+            __('EBANX Currency Converter requires', 'ebanx_currency_converter')
+            . ' <a href="https://br.wordpress.org/plugins/ebanx-payment-gateway-for-woocommerce/">EBANX WooCommerce Gateway</a>. '
+            . __('Please, install and activate it.', 'ebanx_currency_converter');
+    }
+
     if (!ebanx_currency_converter_is_ebanx_active()) {
+        $error = __('To use EBANX Currency Converter you need to', 'ebanx_currency_converter')
+                 . ' <a href="http://wordpress.dev/wp-admin/plugins.php">'
+                 . __('activate', 'ebanx_currency_converter')
+                 . '</a> '
+                 . __('and configure EBANX WooCommerce Gateway.', 'ebanx_currency_converter');
+    }
+
+    if (strlen($error)) {
         require_once plugin_dir_path(__FILE__) . 'includes/class-ebanx-currency-converter-notice.php';
         $notice = new Ebanx_Currency_Converter_Notice();
-        $notice->with_message('To use EBANX Currency Converter you need to install and activate EBANX WooCommerce Gateway.')
+        $notice->with_message($error)
             ->with_type('error')
             ->persistent()
             ->enqueue();
+
+        deactivate_plugins( plugin_basename( __FILE__ ) );
 
         return;
     }

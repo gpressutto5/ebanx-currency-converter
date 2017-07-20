@@ -54,8 +54,10 @@ class Ebanx_Currency_Converter_Notice
     {
         $args = func_get_args();
         switch (count($args)) {
+            /** @noinspection PhpMissingBreakStatementInspection */
             case 3:
                 $this->is_dismissible = $args[2];
+            /** @noinspection PhpMissingBreakStatementInspection */
             case 2:
                 $this->with_type($args[1]);
             case 1:
@@ -65,33 +67,10 @@ class Ebanx_Currency_Converter_Notice
     }
 
     /**
-     * If using a view file instead of a message, it sets the view file name
-     *
-     * @param  string $view
-     * @return Ebanx_Currency_Converter_Notice
-     */
-    public function with_view($view)
-    {
-        $this->view = $view;
-        return $this;
-    }
-
-    /**
-     * Sets the message of the notice
-     *
-     * @param  string $message
-     * @return Ebanx_Currency_Converter_Notice
-     */
-    public function with_message($message)
-    {
-        $this->message = $message;
-        return $this;
-    }
-
-    /**
      * Sets the type of the notice
      *
      * @param  string $type
+     *
      * @return Ebanx_Currency_Converter_Notice
      */
     public function with_type($type)
@@ -100,6 +79,35 @@ class Ebanx_Currency_Converter_Notice
             throw new InvalidArgumentException("Unknown notice type");
         }
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * If using a view file instead of a message, it sets the view file name
+     *
+     * @param  string $view
+     *
+     * @return Ebanx_Currency_Converter_Notice
+     */
+    public function with_view($view)
+    {
+        $this->view = $view;
+
+        return $this;
+    }
+
+    /**
+     * Sets the message of the notice
+     *
+     * @param  string $message
+     *
+     * @return Ebanx_Currency_Converter_Notice
+     */
+    public function with_message($message)
+    {
+        $this->message = $message;
+
         return $this;
     }
 
@@ -111,6 +119,7 @@ class Ebanx_Currency_Converter_Notice
     public function dismissible()
     {
         $this->is_dismissible = true;
+
         return $this;
     }
 
@@ -122,6 +131,7 @@ class Ebanx_Currency_Converter_Notice
     public function persistent()
     {
         $this->is_dismissible = false;
+
         return $this;
     }
 
@@ -129,6 +139,7 @@ class Ebanx_Currency_Converter_Notice
      * Enqueues the notice to the WordPress hook
      *
      * @param  int $priority (optional) Sets the listener priority
+     *
      * @return Ebanx_Currency_Converter_Notice
      * @throws Exception
      */
@@ -144,6 +155,7 @@ class Ebanx_Currency_Converter_Notice
             }, $priority);
 
             $this->view = null;
+
             return $this;
         }
 
@@ -151,8 +163,8 @@ class Ebanx_Currency_Converter_Notice
             throw new Exception("You need to specify a message");
         }
 
-        $type = $this->type;
-        $message = $this->message;
+        $type           = $this->type;
+        $message        = $this->message;
         $is_dismissible = $this->is_dismissible;
 
         add_action('admin_notices', function () use ($type, $message, $is_dismissible) {
@@ -181,20 +193,22 @@ class Ebanx_Currency_Converter_Notice
             $view = $this->view;
             include TEMPLATES_DIR . 'views/html-notice-' . $view . '.php';
             $this->view = null;
+
             return $this;
         }
         if (is_null($this->message)) {
             throw new Exception("You need to specify a message");
         }
-        $type = $this->type;
-        $message = $this->message;
+        $type           = $this->type;
+        $message        = $this->message;
         $is_dismissible = $this->is_dismissible;
-        $classes = "notice notice-{$type}";
+        $classes        = "notice notice-{$type}";
         if ($is_dismissible) {
             $classes .= ' is-dismissible';
         }
         $notice = "<div class='$classes'><p>{$message}</p></div>";
         echo $notice;
+
         return $this;
     }
 }

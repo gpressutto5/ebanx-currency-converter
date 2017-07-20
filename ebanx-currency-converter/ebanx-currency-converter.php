@@ -81,11 +81,11 @@ function run_ebanx_currency_converter()
         require_once plugin_dir_path(__FILE__) . 'includes/class-ebanx-currency-converter-notice.php';
         $notice = new Ebanx_Currency_Converter_Notice();
         $notice->with_message($error)
-            ->with_type('error')
-            ->persistent()
-            ->enqueue();
+               ->with_type('error')
+               ->persistent()
+               ->enqueue();
 
-        deactivate_plugins( plugin_basename( __FILE__ ) );
+        deactivate_plugins(plugin_basename(__FILE__));
 
         return;
     }

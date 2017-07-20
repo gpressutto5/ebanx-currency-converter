@@ -1,25 +1,25 @@
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var browserSync = require('browser-sync').create();
+let gulp = require('gulp');
+let sass = require('gulp-sass');
+let minifyCss = require('gulp-minify-css');
+let concat = require('gulp-concat');
+let rename = require('gulp-rename');
+let browserSync = require('browser-sync').create();
 
-var browserify  = require('browserify');
-var babelify    = require('babelify');
-var source      = require('vinyl-source-stream');
-var buffer      = require('vinyl-buffer');
-var uglify      = require('gulp-uglify');
+let browserify = require('browserify');
+let babelify = require('babelify');
+let source = require('vinyl-source-stream');
+let buffer = require('vinyl-buffer');
+let uglify = require('gulp-uglify');
 
-var PUBLIC_PATH = 'ebanx-currency-converter/public/';
-var ADMIN_PATH = 'ebanx-currency-converter/admin/';
-var SASS_PATH = 'src/scss/';
-var CSS_PATH = 'dist/css/';
-var JS_PATH = 'src/js/';
-var JS_DIST_PATH = 'dist/js/';
+const PUBLIC_PATH = 'ebanx-currency-converter/public/';
+const ADMIN_PATH = 'ebanx-currency-converter/admin/';
+const SASS_PATH = 'src/scss/';
+const CSS_PATH = 'dist/css/';
+const JS_PATH = 'src/js/';
+const JS_DIST_PATH = 'dist/js/';
 
 
-var getPath = function (area) {
+let getPath = function (area) {
     switch (area) {
         case 'admin':
             return ADMIN_PATH;
@@ -30,8 +30,8 @@ var getPath = function (area) {
     }
 };
 
-var transpileSass = function (area) {
-    var path = getPath(area);
+let transpileSass = function (area) {
+    let path = getPath(area);
     if (path) {
         gulp.src(path + SASS_PATH + '*.scss')                          //reads all the SASS files
             .pipe(sass().on('error', sass.logError))  //compiles SASS to CSS and logs errors
@@ -45,11 +45,11 @@ var transpileSass = function (area) {
     }
 };
 
-var transpileJs = function (area) {
-    var path = getPath(area);
+let transpileJs = function (area) {
+    let path = getPath(area);
     if (path) {
         return browserify({entries: './' + path + JS_PATH + 'ebanx-currency-converter-' + area + '.js', debug: true})
-            .transform("babelify", { presets: ["es2015"] })
+            .transform("babelify", {presets: ["es2015"]})
             .bundle()
             .pipe(source('ebanx-currency-converter-' + area + '.js'))
             .pipe(buffer())
@@ -63,19 +63,19 @@ var transpileJs = function (area) {
 
 gulp.task('default', ['sass', 'js']);
 
-gulp.task('public-sass', function() {
+gulp.task('public-sass', function () {
     transpileSass('public')
 });
 
-gulp.task('admin-sass', function() {
+gulp.task('admin-sass', function () {
     transpileSass('admin')
 });
 
-gulp.task('public-js', function() {
+gulp.task('public-js', function () {
     transpileJs('public')
 });
 
-gulp.task('admin-js', function() {
+gulp.task('admin-js', function () {
     transpileJs('admin')
 });
 
@@ -92,7 +92,7 @@ gulp.task('watch', function () {
     gulp.watch(ADMIN_PATH + JS_PATH + '*.js', ['admin-js']);
 });
 
-gulp.task('serve', function() {
+gulp.task('serve', function () {
     browserSync.init({
         proxy: "wordpress.dev"
     });

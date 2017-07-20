@@ -25,33 +25,33 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
     public function widget($args, $instance)
     {
         $data = [
-            'args' => $args,
-            'title' => apply_filters('widget_title', $instance['title']),
+            'args'      => $args,
+            'title'     => apply_filters('widget_title', $instance['title']),
             'countries' => [
                 [
                     'enabled' => $instance['brazil'],
-                    'name' => 'Brazil',
-                    'code' => 'br',
+                    'name'    => 'Brazil',
+                    'code'    => 'br',
                 ],
                 [
                     'enabled' => $instance['mexico'],
-                    'name' => 'Mexico',
-                    'code' => 'mx',
+                    'name'    => 'Mexico',
+                    'code'    => 'mx',
                 ],
                 [
                     'enabled' => $instance['colombia'],
-                    'name' => 'Colombia',
-                    'code' => 'co',
+                    'name'    => 'Colombia',
+                    'code'    => 'co',
                 ],
                 [
                     'enabled' => $instance['chile'],
-                    'name' => 'Chile',
-                    'code' => 'cl',
+                    'name'    => 'Chile',
+                    'code'    => 'cl',
                 ],
                 [
                     'enabled' => $instance['peru'],
-                    'name' => 'Peru',
-                    'code' => 'pe',
+                    'name'    => 'Peru',
+                    'code'    => 'pe',
                 ],
             ],
         ];
@@ -62,24 +62,25 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
      * Outputs the options form on admin
      *
      * @param array $instance The widget options
+     *
      * @return string
      */
     public function form($instance)
     {
         $this->instance = $instance;
-        $data = [
+        $data           = [
             'field' => [
-                'title' => $this->get_field(
+                'title'    => $this->get_field(
                     'title',
                     __('Title:'),
                     __('Ebanx Currency Converter', 'ebanx_currency_converter')
                 ),
-                'brazil' => $this->get_field(
+                'brazil'   => $this->get_field(
                     'brazil',
                     __('Brazil'),
                     true
                 ),
-                'mexico' => $this->get_field(
+                'mexico'   => $this->get_field(
                     'mexico',
                     __('Mexico'),
                     true
@@ -89,12 +90,12 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
                     __('Colombia'),
                     true
                 ),
-                'chile' => $this->get_field(
+                'chile'    => $this->get_field(
                     'chile',
                     __('Chile'),
                     true
                 ),
-                'peru' => $this->get_field(
+                'peru'     => $this->get_field(
                     'peru',
                     __('Peru'),
                     true
@@ -102,14 +103,15 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
             ],
         ];
         ebanx_currency_converter_get_template('widgets/templates/form', $data);
+
         return 'form';
     }
 
     private function get_field($name, $label, $default)
     {
         return [
-            'id' => $this->get_field_id($name),
-            'name' => $this->get_field_name($name),
+            'id'    => $this->get_field_id($name),
+            'name'  => $this->get_field_name($name),
             'value' => $this->instance[$name] ?: $default,
             'label' => $label,
         ];
@@ -120,17 +122,18 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
      *
      * @param array $new_instance The new options
      * @param array $old_instance The previous options
+     *
      * @return array
      */
     public function update($new_instance, $old_instance)
     {
-        $instance = $old_instance;
-        $instance['title'] = $new_instance['title'];
-        $instance['brazil'] = $new_instance['brazil'];
-        $instance['mexico'] = $new_instance['mexico'];
+        $instance             = $old_instance;
+        $instance['title']    = $new_instance['title'];
+        $instance['brazil']   = $new_instance['brazil'];
+        $instance['mexico']   = $new_instance['mexico'];
         $instance['colombia'] = $new_instance['colombia'];
-        $instance['chile'] = $new_instance['chile'];
-        $instance['peru'] = $new_instance['peru'];
+        $instance['chile']    = $new_instance['chile'];
+        $instance['peru']     = $new_instance['peru'];
 
         return $instance;
     }

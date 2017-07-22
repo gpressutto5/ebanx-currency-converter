@@ -8,11 +8,9 @@
     let hasSetUpFinished = false;
 
     $(document).ready(function () {
-        !currentCurrency || currentCurrency === phpvars.original_currency || updatePrices();
-
         setUpPrices();
         setUpFlags();
-        updatePrices();
+        !currentCurrency || currentCurrency === phpvars.original_currency || updatePrices();
     });
 
     let updatePrices = () => {
@@ -26,14 +24,15 @@
             });
             return;
         }
-        spanAmount.each(function () {
-            $(this).html('test');
-        });
-        /*getExchangeRates().then((result) => {
+        getExchangeRates().then((result) => {
             console.log(result);
+            spanAmount.each(function () {
+                $(this).html('test');
+            });
         }, (error) => {
+            currentCurrency = phpvars.original_currency;
             console.log(error);
-        });*/
+        });
     };
 
     let getExchangeRates = () => {

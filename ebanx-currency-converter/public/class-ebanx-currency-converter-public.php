@@ -23,6 +23,9 @@ class Ebanx_Currency_Converter_Public
         wp_enqueue_script($this->ebanx_currency_converter,
             plugin_dir_url(__FILE__) . 'dist/js/ebanx-currency-converter-public.min.js', array('jquery'),
             $this->version, false);
+        wp_localize_script($this->ebanx_currency_converter, 'ebanx_currency_converter_php_vars', [
+            'ajaxurl' => admin_url('admin-ajax.php', null),
+        ]);
     }
 
     public function register_widget()

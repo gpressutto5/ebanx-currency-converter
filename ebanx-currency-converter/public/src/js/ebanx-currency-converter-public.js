@@ -3,6 +3,43 @@
     const ls = require('localstorage-ttl');
     const timeToExpire = 2 * 60 * 1000; // 2 minutes
     const phpvars = ebanx_currency_converter_php_vars;
+    const locale = {
+        BRL: {
+            currencySymbol: 'R$',
+            decimalSeparator: ',',
+            thousandSeparator: '.',
+        },
+        MXN: {
+            currencySymbol: '$',
+            decimalSeparator: ',',
+            thousandSeparator: '.',
+        },
+        COP: {
+            currencySymbol: '$',
+            decimalSeparator: ',',
+            thousandSeparator: '.',
+        },
+        CLP: {
+            currencySymbol: '$',
+            decimalSeparator: ',',
+            thousandSeparator: '.',
+        },
+        PEN: {
+            currencySymbol: 'S\\.',
+            decimalSeparator: ',',
+            thousandSeparator: '.',
+        },
+        USD: {
+            currencySymbol: '$',
+            decimalSeparator: '.',
+            thousandSeparator: ',',
+        },
+        EUR: {
+            currencySymbol: '€',
+            decimalSeparator: '.',
+            thousandSeparator: ',',
+        },
+    };
 
     let currentCurrency = ls.get('ebanx-currency-converter-last-currency');
     let hasSetUpFinished = false;
@@ -25,14 +62,24 @@
             return;
         }
         getExchangeRates().then((result) => {
-            console.log(result);
             spanAmount.each(function () {
-                $(this).html('test');
+                let price;
+                if (price = $(this).data('price')) {
+                    $(this).html(getConvertedPrice(
+                        price,
+                        result
+                    ));
+                }
             });
         }, (error) => {
             currentCurrency = phpvars.original_currency;
-            console.log(error);
         });
+    };
+
+    let getConvertedPrice = (amount, data) => {
+        let price = Number(amount * data.exchange_rate).formatMoney(2, locale[data.current_currency].decimalSeparator, locale[data.current_currency].thousandSeparator);
+
+        return locale[data.current_currency].currencySymbol + ' ' + price;
     };
 
     let getExchangeRates = () => {
@@ -102,5 +149,16 @@
             }
         });
         hasSetUpFinished = true;
+    };
+
+    Number.prototype.formatMoney = function(c, d, t){
+        let n = this;
+        c = isNaN(c = Math.abs(c)) ? 2 : c;
+        d = d === undefined ? "." : d;
+        t = t === undefined ? "," : t;
+        let s = n < 0 ? "-" : "",
+            i = String(parseInt(n = Math.abs(Number(n) || 0).toFixed(c))),
+            j = (j = i.length) > 3 ? j % 3 : 0;
+        return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
     };
 })(jQuery);

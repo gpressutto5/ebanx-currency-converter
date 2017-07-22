@@ -25,6 +25,9 @@ class Ebanx_Currency_Converter_Public
             $this->version, false);
         wp_localize_script($this->ebanx_currency_converter, 'ebanx_currency_converter_php_vars', [
             'ajaxurl' => admin_url('admin-ajax.php', null),
+            'original_currency' => get_woocommerce_currency(),
+            'thousand_separator' => wc_get_price_thousand_separator(),
+            'decimal_separator' => wc_get_price_decimal_separator(),
         ]);
     }
 

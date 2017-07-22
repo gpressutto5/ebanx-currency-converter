@@ -35,4 +35,16 @@
     <input class="checkbox" type="checkbox" <?php checked($field['peru']['value'], 'on'); ?>
            id="<?= $field['peru']['id'] ?>" name="<?= $field['peru']['name'] ?>"/>
     <label for="<?= $field['peru']['id'] ?>"><?= $field['peru']['label'] ?></label>
+    <br>
+
+    <!-- United States -->
+    <input class="checkbox" type="checkbox" <?php checked($field['usa']['value'], 'on'); ?>
+           id="<?= $field['usa']['id'] ?>" name="<?= $field['usa']['name'] ?>"/>
+    <label for="<?= $field['usa']['id'] ?>"><?= $field['usa']['label'] ?></label>
+    <br>
+
+    <!-- Europe -->
+    <input class="checkbox" type="checkbox" <?php checked($field['europe']['value'], 'on'); ?>
+           id="<?= $field['europe']['id'] ?>" name="<?= $field['europe']['name'] ?>"/>
+    <label for="<?= $field['europe']['id'] ?>"><?= $field['europe']['label'] ?></label>
 </p>

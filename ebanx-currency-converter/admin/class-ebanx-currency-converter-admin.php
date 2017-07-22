@@ -2,7 +2,6 @@
 
 class Ebanx_Currency_Converter_Admin
 {
-
     private $ebanx_currency_converter;
     private $version;
 

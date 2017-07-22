@@ -2,7 +2,6 @@
 
 class Ebanx_Currency_Converter_Loader
 {
-
     protected $actions;
     protected $filters;
 

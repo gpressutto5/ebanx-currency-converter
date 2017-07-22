@@ -2,7 +2,6 @@
 
 class Ebanx_Currency_Converter
 {
-
     protected $loader;
     protected $ebanx_currency_converter;
     protected $version;
@@ -34,16 +33,13 @@ class Ebanx_Currency_Converter
 
     private function set_locale()
     {
-
         $plugin_i18n = new Ebanx_Currency_Converter_i18n();
 
         $this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
-
     }
 
     private function define_admin_hooks()
     {
-
         $plugin_admin      = new Ebanx_Currency_Converter_Admin($this->get_ebanx_currency_converter(),
             $this->get_version());
         $ebanx_interceptor = new Ebanx_Currency_converter_Settings_Interceptor();
@@ -51,7 +47,6 @@ class Ebanx_Currency_Converter
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
         $this->loader->add_filter('ebanx_settings_form_fields', $ebanx_interceptor, 'form_fields');
-
     }
 
     public function get_ebanx_currency_converter()
@@ -83,5 +78,4 @@ class Ebanx_Currency_Converter
     {
         return $this->loader;
     }
-
 }

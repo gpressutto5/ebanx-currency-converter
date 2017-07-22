@@ -31,27 +31,32 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
                 [
                     'enabled' => $instance['brazil'],
                     'name'    => 'Brazil',
-                    'code'    => 'br',
+                    'country-code'    => 'br',
+                    'currency-code'    => 'BRL',
                 ],
                 [
                     'enabled' => $instance['mexico'],
                     'name'    => 'Mexico',
-                    'code'    => 'mx',
+                    'country-code'    => 'mx',
+                    'currency-code'    => 'MXN',
                 ],
                 [
                     'enabled' => $instance['colombia'],
                     'name'    => 'Colombia',
-                    'code'    => 'co',
+                    'country-code'    => 'co',
+                    'currency-code'    => 'COP',
                 ],
                 [
                     'enabled' => $instance['chile'],
                     'name'    => 'Chile',
-                    'code'    => 'cl',
+                    'country-code'    => 'cl',
+                    'currency-code'    => 'CLP',
                 ],
                 [
                     'enabled' => $instance['peru'],
                     'name'    => 'Peru',
-                    'code'    => 'pe',
+                    'country-code'    => 'pe',
+                    'currency-code'    => 'PEN',
                 ],
             ],
         ];

@@ -3,6 +3,7 @@
     const ls = require('localstorage-ttl');
     const timeToExpire = 2 * 60 * 1000; // 2 minutes
     const phpvars = ebanx_currency_converter_php_vars;
+    const tax = 0.0038;
     const locale = {
         BRL: {
             currencySymbol: 'R$',
@@ -45,24 +46,27 @@
     let hasSetUpFinished = false;
 
     $(document).ready(function () {
-        setUpPrices();
         setUpFlags();
         !currentCurrency || currentCurrency === phpvars.original_currency || updatePrices();
     });
 
     let updatePrices = () => {
-        if (!hasSetUpFinished) {
-            return;
-        }
+        setUpPrices();
         let spanAmount = $('span.amount');
         if (currentCurrency === phpvars.original_currency) {
             spanAmount.each(function () {
+                if ($(this).parent().hasClass('ebanx-amount-total')) {
+                    return;
+                }
                 $(this).html($(this).attr('data-original'));
             });
             return;
         }
         getExchangeRates().then((result) => {
             spanAmount.each(function () {
+                if ($(this).parent().hasClass('ebanx-amount-total')) {
+                    return;
+                }
                 let price;
                 if (price = $(this).data('price')) {
                     $(this).html(getConvertedPrice(
@@ -77,6 +81,10 @@
     };
 
     let getConvertedPrice = (amount, data) => {
+        if (data.current_currency === 'BRL') {
+            amount *= (1 + tax);
+        }
+
         let price = Number(amount * data.exchange_rate).formatMoney(2, locale[data.current_currency].decimalSeparator, locale[data.current_currency].thousandSeparator);
 
         return locale[data.current_currency].currencySymbol + ' ' + price;
@@ -123,6 +131,9 @@
 
     let setUpPrices = () => {
         $('span.amount').each(function () {
+            if ($(this).parent().hasClass('ebanx-amount-total')) {
+                return;
+            }
             //Original Code
             let originalCode = $(this).attr("data-original");
             if (typeof originalCode === 'undefined' || !originalCode) {

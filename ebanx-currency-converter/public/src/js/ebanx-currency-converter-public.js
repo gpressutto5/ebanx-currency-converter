@@ -48,6 +48,10 @@
     $(document).ready(function () {
         setUpFlags();
         !currentCurrency || currentCurrency === phpvars.original_currency || updatePrices();
+
+        $(document.body).bind('show_variation updated_checkout updated_shipping_method added_to_cart cart_page_refreshed cart_widget_refreshed updated_addons wc_fragments_refreshed wc_fragments_loaded cart_totals_refreshed', function() {
+            updatePrices();
+        });
     });
 
     let updatePrices = () => {

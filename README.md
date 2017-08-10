@@ -1,6 +1,6 @@
 # EBANX Currency Converter
 
-This is a currency converter to use with EBANX Payment Gateway for WooCommerce. This plugin is a unnoficial plugin.
+This is a currency converter to use with EBANX Payment Gateway for WooCommerce. This is an unnoficial plugin.
 
 ## Requirements
 * PHP 5.6+

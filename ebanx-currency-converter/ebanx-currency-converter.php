@@ -70,7 +70,7 @@ function run_ebanx_currency_converter()
                ->persistent()
                ->enqueue();
 
-        require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+        require_once(ABSPATH . 'wp-admin/includes/plugin.php');
         deactivate_plugins(plugin_basename(__FILE__));
 
         return;

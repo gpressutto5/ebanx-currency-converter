@@ -70,6 +70,7 @@ function run_ebanx_currency_converter()
                ->persistent()
                ->enqueue();
 
+        require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
         deactivate_plugins(plugin_basename(__FILE__));
 
         return;
@@ -85,18 +86,12 @@ function run_ebanx_currency_converter()
 function check_requirements()
 {
     if (!ebanx_currency_converter_is_ebanx_installed()) {
-        return
-            __('EBANX Currency Converter requires', 'ebanx_currency_converter')
-            . ' <a href="https://br.wordpress.org/plugins/ebanx-payment-gateway-for-woocommerce/">EBANX WooCommerce Gateway</a>. '
-            . __('Please, install and activate it.', 'ebanx_currency_converter');
-    }
-
-    if (!ebanx_currency_converter_is_ebanx_active()) {
-        return __('To use EBANX Currency Converter you need to', 'ebanx_currency_converter')
-                 . ' <a href="http://wordpress.dev/wp-admin/plugins.php">'
-                 . __('activate', 'ebanx_currency_converter')
-                 . '</a> '
-                 . __('and configure EBANX WooCommerce Gateway.', 'ebanx_currency_converter');
+        return __('To use EBANX Currency Converter you need to install,', 'ebanx_currency_converter')
+               . ' <a href="http://wordpress.dev/wp-admin/plugins.php">'
+               . __('activate', 'ebanx_currency_converter')
+               . '</a> '
+               . __('and configure', 'ebanx_currency_converter')
+               . ' <a href="https://br.wordpress.org/plugins/ebanx-payment-gateway-for-woocommerce/">EBANX WooCommerce Gateway</a>.';
     }
 
     if (in_array(get_woocommerce_currency(), WC_EBANX_Constants::$LOCAL_CURRENCIES)) {

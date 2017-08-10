@@ -15,12 +15,19 @@ This is a currency converter to use with EBANX Payment Gateway for WooCommerce. 
 The easiest way to use this plugin is using the included Widget.
 
 1. On WordPress Admin Dashboard go to Appearence » Widgets.
+
 ![widgets](http://i.imgur.com/ozsOBjl.png)
+
 2. Drag and drop EBANX Currency Converter widget into any layout area.
+
 ![layout area](http://i.imgur.com/8TCAQnT.png)
+
 3. Choose the countries you process with EBANX and save.
+
 ![countries](http://i.imgur.com/kCYwtUD.png)
+
 4. That's it!
+
 ![done!](http://i.imgur.com/NimxCNG.png)
 
 ## Customizing

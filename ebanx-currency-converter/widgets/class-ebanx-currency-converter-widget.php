@@ -59,13 +59,13 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
                     'currency-code'    => 'PEN',
                 ],
                 [
-                    'enabled' => $instance['usa'],
+                    'enabled' => get_woocommerce_currency() === 'USD' ? $instance['usa'] : null,
                     'name'    => 'United States',
                     'country-code'    => 'us',
                     'currency-code'    => 'USD',
                 ],
                 [
-                    'enabled' => $instance['europe'],
+                    'enabled' => get_woocommerce_currency() === 'EUR' ? $instance['europe'] : null,
                     'name'    => 'Europe',
                     'country-code'    => 'eu',
                     'currency-code'    => 'EUR',
@@ -161,8 +161,8 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
         $instance['colombia'] = $new_instance['colombia'];
         $instance['chile']    = $new_instance['chile'];
         $instance['peru']     = $new_instance['peru'];
-        $instance['usa']     = $new_instance['usa'];
-        $instance['europe']     = $new_instance['europe'];
+        $instance['usa']      = get_woocommerce_currency() === 'USD' ? $new_instance['usa'] : null;
+        $instance['europe']   = get_woocommerce_currency() === 'EUR' ? $new_instance['europe'] : null;
 
         return $instance;
     }

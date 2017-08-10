@@ -37,14 +37,18 @@
     <label for="<?= $field['peru']['id'] ?>"><?= $field['peru']['label'] ?></label>
     <br>
 
+  <?php if (get_woocommerce_currency() === 'USD'): ?>
     <!-- United States -->
     <input class="checkbox" type="checkbox" <?php checked($field['usa']['value'], 'on'); ?>
            id="<?= $field['usa']['id'] ?>" name="<?= $field['usa']['name'] ?>"/>
     <label for="<?= $field['usa']['id'] ?>"><?= $field['usa']['label'] ?></label>
     <br>
+  <?php endif; ?>
 
+    <?php if (get_woocommerce_currency() === 'EUR'): ?>
     <!-- Europe -->
     <input class="checkbox" type="checkbox" <?php checked($field['europe']['value'], 'on'); ?>
            id="<?= $field['europe']['id'] ?>" name="<?= $field['europe']['name'] ?>"/>
     <label for="<?= $field['europe']['id'] ?>"><?= $field['europe']['label'] ?></label>
+    <?php endif; ?>
 </p>

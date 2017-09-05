@@ -139,7 +139,7 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
         return [
             'id'    => $this->get_field_id($name),
             'name'  => $this->get_field_name($name),
-            'value' => $this->instance[$name] ?: $default,
+            'value' => isset($this->instance[$name]) ? $this->instance[$name] : $default,
             'label' => $label,
         ];
     }

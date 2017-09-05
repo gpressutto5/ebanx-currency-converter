@@ -1,6 +1,6 @@
 {
   "name": "ebanx-currency-converter",
-  "version": "0.0.1",
+  "version": "1.0.2",
   "description": "This is a currency converter to use with EBANX Payment Gateway for WooCommerce.",
   "main": "index.js",
   "scripts": {

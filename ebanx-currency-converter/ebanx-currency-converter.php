@@ -5,7 +5,7 @@
  * Description: This is a currency converter to use with EBANX Payment Gateway for WooCommerce.
  * Author: Guilherme Pressutto
  * Author URI: https://www.github.com/gpressutto5
- * Version: 1.0.1
+ * Version: 1.0.2
  * License: MIT
  * Text Domain: ebanx-currency-converter
  * Domain Path: /languages

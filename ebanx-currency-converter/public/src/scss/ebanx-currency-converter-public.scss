@@ -19,4 +19,16 @@ $flag-size: 40px;
       width: $flag-size;
     }
   }
+  &-reset-button,
+  &-reset-button:hover,
+  &-reset-button:active {
+    border:none;
+    background: transparent none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 0;
+    user-select: none;
+    outline: none !important;
+  }
 }

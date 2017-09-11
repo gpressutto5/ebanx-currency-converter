@@ -9,11 +9,11 @@
         <?php foreach ($countries as $country):
             if ($country['enabled']): ?>
                 <li class="ebanx-currency-converter--flag-item">
-                    <a href="#" class="ebanx-currency-converter--flag-link" data-country="<?= $country['country-code'] ?>" data-currency="<?= $country['currency-code'] ?>">
+                    <button class="ebanx-currency-converter--flag-link ebanx-currency-converter--reset-button" data-country="<?= $country['country-code'] ?>" data-currency="<?= $country['currency-code'] ?>">
                         <img class="ebanx-currency-converter--flag-image"
                              src="<?= EBANX_CURRENCY_CONVERTER_PLUGIN_DIR_URL ?>assets/images/<?= $country['country-code'] ?>.svg"
                              alt="<?= $country['name'] ?>">
-                    </a>
+                    </button>
                 </li>
             <?php endif;
         endforeach; ?>

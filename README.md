@@ -41,8 +41,8 @@ The currency this link switches to.
 
 Example:
 ```html
-<a href="#" class="ebanx-currency-converter--flag-link" data-currency="BRL">Real</a>
-<a href="#" class="ebanx-currency-converter--flag-link" data-currency="USD">Dollar</a>
+<button class="ebanx-currency-converter--flag-link" data-currency="BRL">Real</button>
+<button class="ebanx-currency-converter--flag-link" data-currency="USD">Dollar</button>
 ```
 
 Also, for styling purposes, the selected currency will automatically get the class `active`.

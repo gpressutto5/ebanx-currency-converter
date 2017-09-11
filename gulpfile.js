@@ -94,7 +94,8 @@ gulp.task('watch', function () {
 
 gulp.task('serve', function () {
     browserSync.init({
-        proxy: "wordpress.dev"
+        proxy: "wordpress.dev",
+        browser: "google chrome"
     });
 
     gulp.run('watch');

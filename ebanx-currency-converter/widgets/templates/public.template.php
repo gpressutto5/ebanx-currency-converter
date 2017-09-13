@@ -7,17 +7,15 @@
 <div class="ebanx-currency-converter--clearfix">
   <!-- Button -->
   <button id="ebanx-currency-converter--dropdown-button" class="ebanx-currency-converter--reset-button">
-    <img class="ebanx-currency-converter--flag-image"
-         src="<?= EBANX_CURRENCY_CONVERTER_PLUGIN_DIR_URL ?>assets/images/br.svg"
-         alt="Brazil">
-    <span class="ebanx-currency-converter--country-text">BRL - Brazilian Real</span>
+    <img class="ebanx-currency-converter--flag-image" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=">
+    <span class="ebanx-currency-converter--country-text"></span>
     <i class="fa fa-caret-down ebanx-currency-converter--caret"></i>
   </button>
   <!-- /Button -->
 
 
   <!-- Content -->
-  <div id="ebanx-currency-converter--select-currency" class="ebanx-currency-converter--select-currency ebanx-currency-converter--select-currency--active">
+  <div id="ebanx-currency-converter--select-currency" class="ebanx-currency-converter--select-currency">
     <ul class="ebanx-currency-converter--items">
         <?php foreach ($countries as $country):
             if ($country['enabled']): ?>
@@ -27,7 +25,7 @@
                   <img class="ebanx-currency-converter--flag-image"
                        src="<?= EBANX_CURRENCY_CONVERTER_PLUGIN_DIR_URL ?>assets/images/<?= $country['country-code'] ?>.svg"
                        alt="<?= $country['name'] ?>">
-                  <span class="ebanx-currency-converter--country-text">COP - Pesos Colombianos</span>
+                  <span class="ebanx-currency-converter--country-text"><?= $country['currency-code'] ?> - <?= $country['currency-name'] ?></span>
                 </button>
               </li>
             <?php endif;

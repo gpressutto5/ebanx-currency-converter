@@ -1,11 +1,12 @@
 $flag-size: 20px;
+$buttonWidth: 225px;
 
 #ebanx-currency-converter- {
   &-dropdown-button {
     position: relative;
     background-color: white;
     height: 40px;
-    width: 200px;
+    width: $buttonWidth;
     border: 1px solid #CCD9E1;
     border-radius: 4px;
 
@@ -23,6 +24,10 @@ $flag-size: 20px;
 
   &-select-currency:hover {
     border-color: #abb6c6;
+  }
+
+  &-select-currency:hover:before {
+    border-bottom-color: #abb6c6;
   }
 
   &-select-currency:active {
@@ -72,7 +77,7 @@ $flag-size: 20px;
 
   &-select-currency {
     position: absolute;
-    width: 200px;
+    width: $buttonWidth;
     top: calc(100% + 10px);
     left: 0;
     box-sizing: border-box;
@@ -105,7 +110,7 @@ $flag-size: 20px;
       border: 6px solid transparent;
     }
     &::before {
-      border-bottom-color: #61777d;
+      border-bottom-color: #DEE5E7;
       top: -13px;
     }
     &::after {
@@ -169,4 +174,8 @@ $flag-size: 20px;
     margin: 0;
     list-style: none;
   }
+}
+
+.ebanx-currency-converter--flag-link.active {
+  display: none;
 }

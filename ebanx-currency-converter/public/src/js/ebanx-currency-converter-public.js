@@ -47,7 +47,19 @@
 
     $(document).ready(function () {
         setUpFlags();
-        !currentCurrency || currentCurrency === phpvars.original_currency || updatePrices();
+        if (!currentCurrency) {
+            currentCurrency = phpvars.original_currency;
+        }
+
+        if (!currentCurrency === phpvars.original_currency) {
+            updatePrices();
+        }
+
+        $('.ebanx-currency-converter--flag-link').removeClass('active');
+        $(".ebanx-currency-converter--flag-link[data-currency='" + currentCurrency + "']").addClass('active');
+
+        setUpButton();
+        updateButton();
 
         $(document.body).bind('show_variation updated_checkout updated_shipping_method added_to_cart cart_page_refreshed cart_widget_refreshed updated_addons wc_fragments_refreshed wc_fragments_loaded cart_totals_refreshed', function() {
             updatePrices();
@@ -126,6 +138,7 @@
                 e.preventDefault();
                 $('.ebanx-currency-converter--flag-link').removeClass('active');
                 $(this).addClass('active');
+                updateButton();
                 ls.set('ebanx-currency-converter-last-currency', currencyCode);
                 currentCurrency = ls.get('ebanx-currency-converter-last-currency');
                 updatePrices();
@@ -164,6 +177,35 @@
             }
         });
         hasSetUpFinished = true;
+    };
+
+    let setUpButton = () => {
+        let button = document.getElementById('ebanx-currency-converter--dropdown-button');
+        let selectCurrency = document.getElementById('ebanx-currency-converter--select-currency');
+
+        button.addEventListener('click', () => {
+            selectCurrency.classList.toggle('ebanx-currency-converter--select-currency--active');
+        });
+
+        document.addEventListener('click', () => {
+            let isClickOnButton = button.contains(event.target);
+
+            if (!isClickOnButton) {
+                selectCurrency.classList.remove('ebanx-currency-converter--select-currency--active');
+            }
+        });
+    };
+
+    let updateButton = () => {
+        let dropdownButton = $('#ebanx-currency-converter--dropdown-button');
+
+        let buttonSpan = dropdownButton.find('.ebanx-currency-converter--country-text');
+        let selectedSpan = $('.active .ebanx-currency-converter--country-text').text();
+        buttonSpan.text(selectedSpan);
+
+        let buttonImage = dropdownButton.find('.ebanx-currency-converter--flag-image');
+        let selectedImage = $('.active .ebanx-currency-converter--flag-image');
+        buttonImage.replaceWith(selectedImage.clone());
     };
 
     Number.prototype.formatMoney = function(c, d, t){

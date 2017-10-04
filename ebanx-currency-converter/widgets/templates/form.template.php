@@ -19,6 +19,12 @@
     <label for="<?= $field['mexico']['id'] ?>"><?= $field['mexico']['label'] ?></label>
     <br>
 
+    <!-- Argentina -->
+    <input class="checkbox" type="checkbox" <?php checked($field['argentina']['value'], 'on'); ?>
+           id="<?= $field['argentina']['id'] ?>" name="<?= $field['argentina']['name'] ?>"/>
+    <label for="<?= $field['argentina']['id'] ?>"><?= $field['argentina']['label'] ?></label>
+    <br>
+
     <!-- Colombia -->
     <input class="checkbox" type="checkbox" <?php checked($field['colombia']['value'], 'on'); ?>
            id="<?= $field['colombia']['id'] ?>" name="<?= $field['colombia']['name'] ?>"/>

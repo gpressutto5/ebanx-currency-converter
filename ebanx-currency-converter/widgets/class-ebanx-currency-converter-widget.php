@@ -43,6 +43,13 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
                     'currency-name'    => 'Pesos Mexicanos',
                 ],
                 [
+                    'enabled' => $instance['argentina'],
+                    'name'    => 'Argentina',
+                    'country-code'    => 'ar',
+                    'currency-code'    => 'ARS',
+                    'currency-name'    => 'Pesos Argentinos',
+                ],
+                [
                     'enabled' => $instance['colombia'],
                     'name'    => 'Colombia',
                     'country-code'    => 'co',
@@ -109,6 +116,11 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
                     __('Mexico'),
                     true
                 ),
+                'argentina'   => $this->get_field(
+                    'argentina',
+                    __('Argentina'),
+                    true
+                ),
                 'colombia' => $this->get_field(
                     'colombia',
                     __('Colombia'),
@@ -165,6 +177,7 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
         $instance['title']    = $new_instance['title'];
         $instance['brazil']   = $new_instance['brazil'];
         $instance['mexico']   = $new_instance['mexico'];
+        $instance['argentina']   = $new_instance['argentina'];
         $instance['colombia'] = $new_instance['colombia'];
         $instance['chile']    = $new_instance['chile'];
         $instance['peru']     = $new_instance['peru'];

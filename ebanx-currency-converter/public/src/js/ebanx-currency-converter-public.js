@@ -15,6 +15,11 @@
             decimalSeparator: ',',
             thousandSeparator: '.',
         },
+        ARS: {
+            currencySymbol: '$',
+            decimalSeparator: ',',
+            thousandSeparator: '.',
+        },
         COP: {
             currencySymbol: '$',
             decimalSeparator: ',',

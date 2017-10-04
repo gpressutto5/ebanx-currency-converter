@@ -28,7 +28,7 @@ The easiest way to use this plugin is using the included Widget.
 
 4. That's it!
 
-![done!](http://i.imgur.com/NimxCNG.png)
+![done!](https://i.imgur.com/2pa3Z3e.png)
 
 ## Customizing
 

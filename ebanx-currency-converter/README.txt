@@ -3,7 +3,7 @@ Contributors: gpressutto5
 Tags: ebanx, currency converter
 Requires at least: 4.0
 Tested up to: 4.8
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 

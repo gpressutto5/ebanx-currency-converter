@@ -1,3 +1,7 @@
+## 1.1.0
+* Feature - New design
+* Feature - Added Argentina
+
 ## 1.0.2
 * Fix - Undefined index
 

@@ -1,3 +1,6 @@
+## 1.1.1
+* Fix - Fixed how converted price is calculated
+
 ## 1.1.0
 * Feature - New design
 * Feature - Added Argentina

@@ -14,7 +14,7 @@ class Ebanx_Currency_Converter_Ajax
         $ebanx = new WC_EBANX_Gateway();
         $data = [
             'status' => 'SUCCESS',
-            'exchange_rate' => $ebanx->get_currency_rate($_GET['currency']),
+            'exchange_rate' => round(floatval($ebanx->get_local_currency_rate_for_site($_GET['currency'])), 2),
             'store_currency' => $ebanx->merchant_currency,
             'current_currency' => $_GET['currency'],
         ];

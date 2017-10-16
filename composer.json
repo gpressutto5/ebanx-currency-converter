@@ -1,0 +1,20 @@
+{
+  "name": "gpressutto5/ebanx-currency-converter",
+  "description": "This is a currency converter to use with EBANX Payment Gateway for WooCommerce. This is an unnoficial plugin.",
+  "type": "project",
+  "minimum-stability": "dev",
+  "config": {
+    "vendor-dir": "ebanx-currency-converter/lib/vendor"
+  },
+  "authors": [
+    {
+      "name": "Guilherme Pressutto",
+      "email": "gpressutto5@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Ebanx\\Converter\\": "ebanx-currency-converter/"
+    }
+  }
+}

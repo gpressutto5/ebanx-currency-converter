@@ -1,6 +1,7 @@
 <?php
+namespace Ebanx\Converter\Includes;
 
-class Ebanx_Currency_Converter_Loader
+class Loader
 {
     protected $actions;
     protected $filters;

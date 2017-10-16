@@ -1,6 +1,9 @@
 <?php
+namespace Ebanx\Converter\Widgets;
 
-class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
+use Ebanx\Converter\Includes\Globals;
+
+class Widget extends \WP_Widget
 {
     private $instance;
 
@@ -86,7 +89,7 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
                 ],
             ],
         ];
-        ebanx_currency_converter_get_template('widgets/templates/public', $data);
+        Globals::get_template('widgets/templates/public', $data);
     }
 
     /**
@@ -148,7 +151,7 @@ class Class_Ebanx_Currency_Converter_Widget extends WP_Widget
                 ),
             ],
         ];
-        ebanx_currency_converter_get_template('widgets/templates/form', $data);
+        Globals::get_template('widgets/templates/form', $data);
 
         return 'form';
     }

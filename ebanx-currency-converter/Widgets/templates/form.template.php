@@ -1,6 +1,11 @@
+<?php
+/**
+ * @var array $field
+ */
+?>
 <p>
     <label for="<?= $field['title']['id'] ?>"><?= $field['title']['label'] ?></label>
-    <input class="widefat" id="<?= $field['title']['id'] ?>" name="<?= $field['title']['name'] ?>" type="text"
+    <input class="widefat" id="<?= $field['title']['id'] ?>" name="<?= $field['title']['name'] ?>"
            value="<?= esc_attr($field['title']['value']) ?>"/>
 </p>
 <p>

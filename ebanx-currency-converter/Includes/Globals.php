@@ -1,15 +1,7 @@
 <?php
-function ebanx_currency_converter_get_template($path, $args = [], $echo = true)
-{
-    return Ebanx_Currency_Converter_Globals::get_template($path, $args, $echo);
-}
+namespace Ebanx\Converter\Includes;
 
-function ebanx_currency_converter_is_ebanx_installed()
-{
-    return Ebanx_Currency_Converter_Globals::is_ebanx_installed();
-}
-
-class Ebanx_Currency_Converter_Globals
+class Globals
 {
     public static function get_template($path, $args = [], $echo = true)
     {
@@ -21,7 +13,7 @@ class Ebanx_Currency_Converter_Globals
         if ($echo) {
             include $path;
 
-            return;
+            return '';
         }
 
         ob_start();

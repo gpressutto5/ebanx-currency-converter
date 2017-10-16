@@ -1,11 +1,7 @@
 <?php
+namespace Ebanx\Converter\Includes;
 
-if (!defined('ABSPATH')) {
-    exit;
-}
-
-// As of 1.10.1
-class Ebanx_Currency_Converter_Notice
+class Notice
 {
     /**
      * The message of the notice
@@ -71,12 +67,12 @@ class Ebanx_Currency_Converter_Notice
      *
      * @param  string $type
      *
-     * @return Ebanx_Currency_Converter_Notice
+     * @return Notice
      */
     public function with_type($type)
     {
         if (!in_array($type, $this->allowed_types)) {
-            throw new InvalidArgumentException("Unknown notice type");
+            throw new \InvalidArgumentException("Unknown notice type");
         }
         $this->type = $type;
 
@@ -88,7 +84,7 @@ class Ebanx_Currency_Converter_Notice
      *
      * @param  string $view
      *
-     * @return Ebanx_Currency_Converter_Notice
+     * @return Notice
      */
     public function with_view($view)
     {
@@ -102,7 +98,7 @@ class Ebanx_Currency_Converter_Notice
      *
      * @param  string $message
      *
-     * @return Ebanx_Currency_Converter_Notice
+     * @return Notice
      */
     public function with_message($message)
     {
@@ -114,7 +110,7 @@ class Ebanx_Currency_Converter_Notice
     /**
      * Makes the notice dismissible
      *
-     * @return Ebanx_Currency_Converter_Notice
+     * @return Notice
      */
     public function dismissible()
     {
@@ -126,7 +122,7 @@ class Ebanx_Currency_Converter_Notice
     /**
      * Makes the notice persistent
      *
-     * @return Ebanx_Currency_Converter_Notice
+     * @return Notice
      */
     public function persistent()
     {
@@ -140,8 +136,8 @@ class Ebanx_Currency_Converter_Notice
      *
      * @param  int $priority (optional) Sets the listener priority
      *
-     * @return Ebanx_Currency_Converter_Notice
-     * @throws Exception
+     * @return Notice
+     * @throws \Exception
      */
     public function enqueue($priority = null)
     {
@@ -160,7 +156,7 @@ class Ebanx_Currency_Converter_Notice
         }
 
         if (is_null($this->message)) {
-            throw new Exception("You need to specify a message");
+            throw new \Exception("You need to specify a message");
         }
 
         $type           = $this->type;
@@ -184,8 +180,8 @@ class Ebanx_Currency_Converter_Notice
     /**
      * Prints the notice when using hook won't work
      *
-     * @return Ebanx_Currency_Converter_Notice
-     * @throws Exception
+     * @return Notice
+     * @throws \Exception
      */
     public function display()
     {
@@ -197,7 +193,7 @@ class Ebanx_Currency_Converter_Notice
             return $this;
         }
         if (is_null($this->message)) {
-            throw new Exception("You need to specify a message");
+            throw new \Exception("You need to specify a message");
         }
         $type           = $this->type;
         $message        = $this->message;

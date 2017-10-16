@@ -1,9 +1,7 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit;
-}
+namespace Ebanx\Converter\Interceptors;
 
-class Ebanx_Currency_converter_Settings_Interceptor
+class Settings
 {
     /**
      * Identify interceptor instances

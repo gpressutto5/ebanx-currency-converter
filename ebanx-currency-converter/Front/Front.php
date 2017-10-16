@@ -1,6 +1,9 @@
 <?php
+namespace Ebanx\Converter\Front;
 
-class Ebanx_Currency_Converter_Public
+use Ebanx\Converter\Widgets\Widget;
+
+class Front
 {
     private $ebanx_currency_converter;
     private $version;
@@ -33,6 +36,6 @@ class Ebanx_Currency_Converter_Public
 
     public function register_widget()
     {
-        register_widget('Class_Ebanx_Currency_Converter_Widget');
+        register_widget(Widget::class);
     }
 }

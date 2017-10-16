@@ -1,6 +1,7 @@
 <?php
+namespace Ebanx\Converter\Admin;
 
-class Ebanx_Currency_Converter_Admin
+class Admin
 {
     private $ebanx_currency_converter;
     private $version;

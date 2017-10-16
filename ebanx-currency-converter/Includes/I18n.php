@@ -1,6 +1,7 @@
 <?php
+namespace Ebanx\Converter\Includes;
 
-class Ebanx_Currency_Converter_i18n
+class I18n
 {
     public function load_plugin_textdomain()
     {

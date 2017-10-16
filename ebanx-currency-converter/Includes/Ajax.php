@@ -1,6 +1,7 @@
 <?php
+namespace Ebanx\Converter\Includes;
 
-class Ebanx_Currency_Converter_Ajax
+class Ajax
 {
     public function get_exchange_rate()
     {
@@ -11,7 +12,7 @@ class Ebanx_Currency_Converter_Ajax
             wp_die();
         }
 
-        $ebanx = new WC_EBANX_Gateway();
+        $ebanx = new \WC_EBANX_Gateway();
         $data = [
             'status' => 'SUCCESS',
             'exchange_rate' => round(floatval($ebanx->get_local_currency_rate_for_site($_GET['currency'])), 2),

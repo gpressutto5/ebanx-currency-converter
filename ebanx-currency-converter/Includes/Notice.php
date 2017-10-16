@@ -54,8 +54,10 @@ class Notice
             case 3:
                 $this->is_dismissible = $args[2];
             /** @noinspection PhpMissingBreakStatementInspection */
+            // no break
             case 2:
                 $this->with_type($args[1]);
+                // no break
             case 1:
                 $this->message = $args[0];
                 break;

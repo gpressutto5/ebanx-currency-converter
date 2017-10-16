@@ -12,8 +12,10 @@ class Widget extends \WP_Widget
      */
     public function __construct()
     {
-        parent::__construct('ebanx_currency_converter',
-            __('Ebanx Currency Converter', 'ebanx_currency_converter'), [
+        parent::__construct(
+            'ebanx_currency_converter',
+            __('Ebanx Currency Converter', 'ebanx_currency_converter'),
+            [
                 'description' => esc_html__('Ebanx Currency Converter Widget', 'ebanx_currency_converter'),
             ]
         );

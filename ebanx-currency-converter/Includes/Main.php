@@ -37,8 +37,10 @@ class Main
 
     private function define_admin_hooks()
     {
-        $plugin_admin      = new Admin($this->get_ebanx_currency_converter(),
-            $this->get_version());
+        $plugin_admin      = new Admin(
+            $this->get_ebanx_currency_converter(),
+            $this->get_version()
+        );
         $ebanx_interceptor = new Settings();
 
         $this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
@@ -58,8 +60,10 @@ class Main
 
     private function define_public_hooks()
     {
-        $plugin_public = new Front($this->get_ebanx_currency_converter(),
-            $this->get_version());
+        $plugin_public = new Front(
+            $this->get_ebanx_currency_converter(),
+            $this->get_version()
+        );
 
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
         $this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');

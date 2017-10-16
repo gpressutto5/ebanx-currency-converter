@@ -11,8 +11,8 @@ let source = require('vinyl-source-stream');
 let buffer = require('vinyl-buffer');
 let uglify = require('gulp-uglify');
 
-const PUBLIC_PATH = 'ebanx-currency-converter/public/';
-const ADMIN_PATH = 'ebanx-currency-converter/admin/';
+const PUBLIC_PATH = 'ebanx-currency-converter/Front/';
+const ADMIN_PATH = 'ebanx-currency-converter/Admin/';
 const SASS_PATH = 'src/scss/';
 const CSS_PATH = 'dist/css/';
 const JS_PATH = 'src/js/';
